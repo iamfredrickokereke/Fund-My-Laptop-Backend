@@ -2,6 +2,9 @@ const jwt = require("jsonwebtoken");
 const User = require("./../models/User");
 const CustomError = require("./../utils/CustomError");
 
+const Favs = require("./../models/Favorites"); // favorites model
+
+
 const jwtSecret = process.env.JWT_SECRET;
 
 class UserService {
@@ -45,6 +48,17 @@ class UserService {
 
     }
   }
+
+
+  //favorites storage in DB
+  async newFavorite(data){
+     if(await Favs.findOne({requestID: data.requestID}))
+      throw new CustomError("Request is already a favorite");
+
+      const favRequest = new Favs(data);
+      await favRequest.save();
+  }
+  
 
   async update(data) {
     if (!data.id) throw new CustomError('No specified user with the id');
