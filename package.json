@@ -13,6 +13,7 @@
   "dependencies": {
 
 
+
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
 
@@ -39,5 +40,8 @@
   "devDependencies": {
     "jest": "^26.0.1",
     "nodemon": "^1.19.4"
+
+    "express": "^4.17.1"
+
   }
 }
