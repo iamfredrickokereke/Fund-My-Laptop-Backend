@@ -3,6 +3,8 @@ const router = require("express").Router();
 
 const userRoute = require("./userRoute")
 const requestRoute = require("./requestRoute")
+const paymentRoute = require("./paymentRoute");
+
 
 
 router.get("/test", (req, res) => res.send("Yeah it works!"));
@@ -17,5 +19,11 @@ router.get('/return',    passport.authenticate('twitter', { failureRedirect: '
 }); 
 router.use("/users", userRoute());
 router.use("/request", requestRoute());
+
+     router.use("/users", userRoute());
+     router.use("/request", requestRoute());
+     router.use("/payment",paymentRoute);
+
+
 
 module.exports = router
